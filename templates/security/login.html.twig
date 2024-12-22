@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Login | My Application{% endblock %}
+
+{% block body %}
+{% block content %}
+
+<div class="container d-flex flex-column align-items-center justify-content-center vh-100">
+    <div class="card p-4 shadow-lg" style="width: 100%; max-width: 400px;">
+        <h1 class="text-center mb-4">Bienvenue!</h1>
+        
+        {% if error %}
+            <div class="alert alert-danger text-center">
+                {{ error.messageKey|trans(error.messageData, 'security') }}
+            </div>
+        {% endif %}
+
+        {% if app.user %}
+            <div class="alert alert-success text-center">
+                Vous êtes connecté en tant que <strong>{{ app.user.userIdentifier }}</strong>. 
+                <a href="{{ path('app_logout') }}" class="text-decoration-none">Logout</a>
+            </div>
+        {% endif %}
+
+        <form method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label">Adresse Email</label>
+                <input type="email" 
+                       value="{{ last_username }}" 
+                       name="_username" 
+                       id="username" 
+                       class="form-control" 
+                       autocomplete="email" 
+                       required 
+                       autofocus>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Mot de passe</label>
+                <input type="password" 
+                       name="_password" 
+                       id="password" 
+                       class="form-control" 
+                       autocomplete="current-password" 
+                       required>
+            </div>
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+            <button class="btn btn-primary w-100" type="submit">
+                Se connecter
+            </button>
+        </form>
+
+        <div class="text-center mt-3">
+            <small>Pas encore de compte? <a href="{{ path('app_register') }}" class="text-decoration-none">S'inscrire</a></small>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% endblock %}
+

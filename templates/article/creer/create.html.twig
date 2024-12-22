@@ -1,0 +1,22 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'articles{% endblock %}
+
+{% block body %}
+    {% block content %}
+    <div id="layoutSidenav_content">
+        <main class="d-flex justify-content-center align-items-center min-vh-100">
+            <div class="card p-4" style="width: 100%; max-width: 600px;">
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                <h1 class="text-center mb-4">Création d'Article</h1>
+                {{ form(form) }}
+            </div>
+        </main>
+    </div>
+{% endblock %}
+{% endblock %}

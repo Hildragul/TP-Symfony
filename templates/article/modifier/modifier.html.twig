@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LuckyController!{% endblock %}
+
+{% block body %}
+{% block content %}
+    <div id="layoutSidenav_content">
+        <main>
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <div class="card" style="width: 18rem;">
+                <h1>Modification articles</h1>
+                {{ form(form) }}
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}
+{% endblock %}

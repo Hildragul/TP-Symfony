@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    {% block content %}
+        <div class="container d-flex justify-content-center align-items-start min-vh-100" style="margin-top: 5%;">
+            <div class="w-100" style="max-width: 600px;">
+                <h1 class="text-primary mb-4 text-center">Inscription</h1>
+
+                {{ form_errors(registrationForm) }}
+
+                {{ form_start(registrationForm, {'attr': {'class': 'form-group'}}) }}
+
+                <div class="mb-3">
+                    {{ form_label(registrationForm.email, 'Adresse email', {'label_attr': {'class': 'form-label fw-bold text-primary'}}) }}
+                    {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control shadow-sm', 'placeholder': 'Entrez votre adresse email'}}) }}
+                    <small class="form-text text-muted">Nous ne partagerons jamais votre email.</small>
+                </div>
+
+                <div class="mb-3">
+                    {{ form_label(registrationForm.plainPassword, 'Mot de passe', {'label_attr': {'class': 'form-label fw-bold text-primary'}}) }}
+                    {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control shadow-sm', 'placeholder': 'Créez un mot de passe'}}) }}
+                    <small class="form-text text-muted">Utilisez au moins 6 caractères.</small>
+                </div>
+
+                <div class="form-check mb-3">
+                    {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
+                    {{ form_label(registrationForm.agreeTerms, 'Accepter les termes et conditions', {'label_attr': {'class': 'form-check-label fw-light text-secondary'}}) }}
+                </div>
+
+                <button type="submit" class="btn btn-primary w-100">S'inscrire</button>
+
+                {{ form_end(registrationForm) }}
+            </div>
+        </div>
+    {% endblock %}
+{% endblock %}
